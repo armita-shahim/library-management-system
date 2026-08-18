@@ -1,0 +1,15 @@
+{
+    "name": "armit/library-management-system",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Armita",
+            "email": "armitashahim9@gmail.com"
+        }
+    ],
+    "require": {}
+}
