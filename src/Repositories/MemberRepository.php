@@ -38,6 +38,28 @@ class MemberRepository extends AbstractRepository
         return null;
     }
 
+    public function update(Member $member): bool
+    {
+        $members = $this->findAll();
+
+        for ($i = 0; $i < count($members); $i++) {
+            if ($members[$i]->getId() === $member->getId()) {
+                $members[$i] = $member;
+
+                $data = array_map(
+                    fn(Member $member): array => $member->toArray(),
+                    $members
+                );
+
+                $this->storage->save($data);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function delete(string $id): bool
     {
         $members = $this->findAll();

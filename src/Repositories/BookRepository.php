@@ -36,6 +36,28 @@ class BookRepository extends AbstractRepository
         return null;
     }
 
+    public function update(Book $book): bool
+    {
+        $books = $this->findAll();
+
+        for ($i = 0; $i < count($books); $i++) {
+            if ($books[$i]->getIsbn() === $book->getIsbn()) {
+                $books[$i] = $book;
+
+                $data = array_map(
+                    fn(Book $book): array => $book->toArray(),
+                    $books
+                );
+
+                $this->storage->save($data);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public function delete(string $isbn): bool
     {
         $books = $this->findAll();
