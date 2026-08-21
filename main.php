@@ -39,17 +39,15 @@ while (true) {
     echo "4.  List Books" . PHP_EOL;
     echo "5.  Filter Available Books" . PHP_EOL;
     echo "6.  Filter Books by Category" . PHP_EOL;
-    echo "7.  Sort Books by Title" . PHP_EOL;
-    echo "8.  Sort Books by Due Date" . PHP_EOL;
-    echo "9.  Add Member" . PHP_EOL;
-    echo "10. Remove Member" . PHP_EOL;
-    echo "11. Search Members" . PHP_EOL;
-    echo "12. List Members" . PHP_EOL;
-    echo "13. Borrow Book" . PHP_EOL;
-    echo "14. Return Book" . PHP_EOL;
-    echo "15. View Member History" . PHP_EOL;
-    echo "16. View Overdue Books" . PHP_EOL;
-    echo "17. View Overdue Fines" . PHP_EOL;
+    echo "7.  Add Member" . PHP_EOL;
+    echo "8. Remove Member" . PHP_EOL;
+    echo "9. Search Members" . PHP_EOL;
+    echo "10. List Members" . PHP_EOL;
+    echo "11. Borrow Book" . PHP_EOL;
+    echo "12. Return Book" . PHP_EOL;
+    echo "13. View Member History" . PHP_EOL;
+    echo "14. View Overdue Books" . PHP_EOL;
+    echo "15. View Overdue Fines" . PHP_EOL;
     echo "0.  Exit" . PHP_EOL;
 
     $choice = readline("Choose an option: ");
@@ -207,44 +205,7 @@ while (true) {
 
             break;
 
-
         case '7':
-
-            $books = $library->sortBooksByTitle();
-
-            echo "Books sorted by title:" . PHP_EOL;
-
-            for ($i = 0; $i < count($books); $i++) {
-
-                echo "- "
-                    . $books[$i]->getTitle()
-                    . PHP_EOL;
-            }
-
-            break;
-
-
-        case '8':
-
-            $books = $library->sortBooksByDueDate();
-
-            echo "Books sorted by due date:" . PHP_EOL;
-
-            for ($i = 0; $i < count($books); $i++) {
-
-                $dueDate = $books[$i]->getDueDate();
-
-                echo "- "
-                    . $books[$i]->getTitle()
-                    . " | "
-                    . ($dueDate ?? "Not borrowed")
-                    . PHP_EOL;
-            }
-
-            break;
-
-
-        case '9':
 
             $id = readline("Enter member ID: ");
             $fullName = readline("Enter full name: ");
@@ -267,7 +228,7 @@ while (true) {
             break;
 
 
-        case '10':
+        case '8':
 
             $id = readline("Enter member ID: ");
 
@@ -284,7 +245,7 @@ while (true) {
             break;
 
 
-        case '11':
+        case '9':
 
             $query = readline("Enter search query: ");
 
@@ -314,7 +275,7 @@ while (true) {
             break;
 
 
-        case '12':
+        case '10':
             $members = $library->listMembers();
 
             if (count($members) === 0) {
@@ -339,7 +300,7 @@ while (true) {
             break;
 
 
-        case '13':
+        case '11':
 
             $isbn = readline("Enter book ISBN: ");
             $id = readline("Enter member ID: ");
@@ -360,7 +321,7 @@ while (true) {
             break;
 
 
-        case '14':
+        case '12':
 
             $isbn = readline("Enter book ISBN: ");
             $id = readline("Enter member ID: ");
@@ -381,7 +342,7 @@ while (true) {
             break;
 
 
-        case '15':
+        case '13':
 
             $id = readline("Enter member ID: ");
 
@@ -413,7 +374,7 @@ while (true) {
             break;
 
 
-        case '16':
+        case '14':
 
             $books = $library->getOverdueBooks();
 
@@ -438,7 +399,7 @@ while (true) {
             break;
 
 
-        case '17':
+        case '15':
 
             $fines = $library->getOverdueFines();
 
