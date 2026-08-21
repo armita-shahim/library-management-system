@@ -169,16 +169,6 @@ class Library
         return $this->bookRepository->filterByCategory($category);
     }
 
-    public function sortBooksByTitle(): array
-    {
-        return $this->bookRepository->sortByTitle();
-    }
-
-    public function sortBooksByDueDate(): array
-    {
-        return $this->bookRepository->sortByDueDate();
-    }
-
     public function getHistoryForMember(string $id): array
     {
         return $this->historyRepository->findByMember($id);
