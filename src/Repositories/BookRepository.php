@@ -36,6 +36,88 @@ class BookRepository extends AbstractRepository
         return null;
     }
 
+    public function search(string $query): array
+    {
+        $books = $this->findAll();
+        $results = [];
+
+        for ($i = 0; $i < count($books); $i++) {
+            if (
+                stripos($books[$i]->getTitle(), $query) !== false ||
+                stripos($books[$i]->getAuthor(), $query) !== false ||
+                stripos($books[$i]->getIsbn(), $query) !== false ||
+                stripos($books[$i]->getCategory(), $query) !== false
+            ) {
+                $results[] = $books[$i];
+            }
+        }
+
+        return $results;
+    }
+
+    public function filterAvailable(): array
+    {
+        $books = $this->findAll();
+        $results = [];
+
+        for ($i = 0; $i < count($books); $i++) {
+            if ($books[$i]->isAvailable()) {
+                $results[] = $books[$i];
+            }
+        }
+
+        return $results;
+    }
+
+    public function filterByCategory(string $category): array
+    {
+        $books = $this->findAll();
+        $results = [];
+
+        for ($i = 0; $i < count($books); $i++) {
+            if (strtolower($books[$i]->getCategory()) === strtolower($category)) {
+                $results[] = $books[$i];
+            }
+        }
+
+        return $results;
+    }
+
+    public function sortByTitle(): array
+    {
+        $books = $this->findAll();
+
+        usort($books, function ($book1, $book2) {
+            return strcasecmp(
+                $book1->getTitle(),
+                $book2->getTitle()
+            );
+        });
+
+        return $books;
+    }
+
+    public function sortByDueDate(): array
+    {
+        $books = $this->findAll();
+
+        usort($books, function ($book1, $book2) {
+
+            if ($book1->getDueDate() === null) {
+                return 1;
+            }
+
+            if ($book2->getDueDate() === null) {
+                return -1;
+            }
+
+            return strtotime($book1->getDueDate())
+                - strtotime($book2->getDueDate());
+        });
+
+        return $books;
+    }
+
     public function update(Book $book): bool
     {
         $books = $this->findAll();

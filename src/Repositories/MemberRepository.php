@@ -38,6 +38,24 @@ class MemberRepository extends AbstractRepository
         return null;
     }
 
+    public function search(string $query): array
+    {
+        $members = $this->findAll();
+        $results = [];
+
+        for ($i = 0; $i < count($members); $i++) {
+            if (
+                stripos($members[$i]->getId(), $query) !== false ||
+                stripos($members[$i]->getFullName(), $query) !== false ||
+                stripos($members[$i]->getEmail(), $query) !== false
+            ) {
+                $results[] = $members[$i];
+            }
+        }
+
+        return $results;
+    }
+
     public function update(Member $member): bool
     {
         $members = $this->findAll();
