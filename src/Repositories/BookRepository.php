@@ -83,41 +83,6 @@ class BookRepository extends AbstractRepository
         return $results;
     }
 
-    public function sortByTitle(): array
-    {
-        $books = $this->findAll();
-
-        usort($books, function ($book1, $book2) {
-            return strcasecmp(
-                $book1->getTitle(),
-                $book2->getTitle()
-            );
-        });
-
-        return $books;
-    }
-
-    public function sortByDueDate(): array
-    {
-        $books = $this->findAll();
-
-        usort($books, function ($book1, $book2) {
-
-            if ($book1->getDueDate() === null) {
-                return 1;
-            }
-
-            if ($book2->getDueDate() === null) {
-                return -1;
-            }
-
-            return strtotime($book1->getDueDate())
-                - strtotime($book2->getDueDate());
-        });
-
-        return $books;
-    }
-
     public function update(Book $book): bool
     {
         $books = $this->findAll();
