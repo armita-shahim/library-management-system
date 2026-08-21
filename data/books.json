@@ -1,1 +1,38 @@
-[]
+[
+    {
+        "title": "Harry Potter",
+        "author": "Rolling",
+        "category": "Fantasy",
+        "isbn": "1234567890987",
+        "available": false,
+        "borrowedAt": "2026-08-21 13:49:59",
+        "dueDate": "2026-08-04 13:49:59"
+    },
+    {
+        "title": "The maze runner",
+        "author": "James Dashner",
+        "category": "Dystopyan",
+        "isbn": "2345678909876",
+        "available": true,
+        "borrowedAt": null,
+        "dueDate": null
+    },
+    {
+        "title": "java programming",
+        "author": "daniel",
+        "category": "programming",
+        "isbn": "4567890987654",
+        "available": true,
+        "borrowedAt": null,
+        "dueDate": null
+    },
+    {
+        "title": "pp",
+        "author": "oo",
+        "category": "kk",
+        "isbn": "0987654321234",
+        "available": false,
+        "borrowedAt": "2026-08-21 15:02:34",
+        "dueDate": "2026-08-04 15:02:34"
+    }
+]

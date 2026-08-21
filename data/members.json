@@ -1,1 +1,11 @@
-[]
+[
+    {
+        "id": "123",
+        "fullName": "sasha",
+        "email": "sasha@gmail.com",
+        "borrowedBooks": [
+            "1234567890987",
+            "0987654321234"
+        ]
+    }
+]
